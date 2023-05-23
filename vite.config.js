@@ -30,6 +30,7 @@ export default defineConfig({
         // 实际的路径转化
         additionalData: `
           @use "@/styles/element/index.scss" as *;
+          @use "@/styles/var.scss" as *;
         `,
       }
     }
