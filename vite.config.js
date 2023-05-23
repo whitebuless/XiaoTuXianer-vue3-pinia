@@ -27,6 +27,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         // 自动导入定制化样式文件进行样式覆盖
+        // 实际的路径转化
         additionalData: `
           @use "@/styles/element/index.scss" as *;
         `,
