@@ -4,7 +4,6 @@ import { onMounted,ref } from "vue"
 
 const categoryList=ref([])
 const getCategory=async()=>{
-  
   const res=await getCategoryAPI()
   console.log(res)
   categoryList.value=res.result
@@ -26,7 +25,6 @@ onMounted(()=>{
         <li class="home" v-for="item in categoryList" :key="item.id">
           <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
-
       </ul>
       <div class="search">
         <i class="iconfont icon-search"></i>
