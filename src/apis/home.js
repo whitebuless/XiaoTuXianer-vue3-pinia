@@ -1,9 +1,14 @@
 import httpInstance from '@/utils/http'
 
-//huoqvbanner
-export function getBannerAPI(){
+//banner
+export function getBannerAPI(params={}){
+  //defalut1 other2
+  const { distributionSite='1' }=params
   return httpInstance({
-    url:'/home/banner'
+    url:'/home/banner',
+    params:{
+      distributionSite
+    }
   })
 }
 
