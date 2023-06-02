@@ -16,6 +16,7 @@ onMounted(()=>categoryStore.getCategory())
   <LayoutFixed/>
   <LayoutNav />
   <LayoutHeader />
-  <RouterView />
+  <!-- 添加key -->
+  <RouterView :key="$route.fullPath"/>
   <LayoutFooter />
 </template>

@@ -2,18 +2,25 @@
 import { getCategoryAPI } from '@/apis/category'
 import { getBannerAPI } from '@/apis/home'
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute,onBeforeRouteUpdate } from 'vue-router'
 import GoodsItem from '../Home/components/GoodsItem.vue'
 
 //获取数据
 const categoryData = ref({})
 const route = useRoute()
-const getCategory = async () => {
-  const res = await getCategoryAPI(route.params.id)
+const getCategory = async (id=route.params.id) => {
+  const res = await getCategoryAPI(id)
   categoryData.value = res.result
 }
 
 onMounted(() => getCategory())
+
+//路由参数变化时，分类数据接口重新发送
+onBeforeRouteUpdate((to)=>{
+  // console.log("change");
+  getCategory(to.params.id)
+})
+
 
 //banner
 const bannerList = ref([])

@@ -5,7 +5,7 @@ export const lazyPlugin={
     //lazy-load logic
     app.directive('img-lazy',{
       mounted(el,binding) {
-        console.log(el,binding.value)
+        // console.log(el,binding.value)
         const { stop } = useIntersectionObserver(
           el,
           ([{ isIntersecting }]) => {
