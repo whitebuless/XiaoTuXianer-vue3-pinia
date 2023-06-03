@@ -10,6 +10,7 @@ import router from './router'
 
 //引入懒加载
 import { lazyPlugin } from '@/directives/index'
+import { componentPlagin } from '@/components'
 
 
 // // 测试接口函数
@@ -24,5 +25,5 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(lazyPlugin)
-
+app.use(componentPlagin)
 app.mount('#app')
