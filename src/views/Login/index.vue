@@ -2,8 +2,12 @@
 import { ref} from 'vue'
 import 'element-plus/theme-chalk/el-message.css'
 import { ElMessage } from 'element-plus'
-import { loginAPI } from '@/apis/user'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
+
+
+const userStore=useUserStore()
+
 // 表单校验
 // 准备表单对象
 const form=ref({
@@ -42,8 +46,7 @@ const doLogin=()=>{
   formRef.value.validate(async(valid)=>{
     // valid所有项都通过才为true
     if(valid){
-      const res=await loginAPI({account,password})
-      console.log(res)
+      await userStore.getUserInfo({account,password})
       // 提示用户
       ElMessage({type:'success',message:'登陆成功'})
       // 跳转组件
