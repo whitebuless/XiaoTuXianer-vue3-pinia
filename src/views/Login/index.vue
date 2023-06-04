@@ -1,5 +1,9 @@
 <script setup>
 import { ref} from 'vue'
+import 'element-plus/theme-chalk/el-message.css'
+import { ElMessage } from 'element-plus'
+import { loginAPI } from '@/apis/user'
+import { useRouter } from 'vue-router'
 // 表单校验
 // 准备表单对象
 const form=ref({
@@ -14,7 +18,7 @@ const rules={
   ],
   password:[
     {required:true,message:'密码不能为空',trigger:'blur'},
-    {min:6,max:14,message:'密码长度介于6-14',trigger:'blur'}
+    {min:6,max:54,message:'密码长度介于6-14',trigger:'blur'}
   ],
   agree:[
     {
@@ -31,16 +35,19 @@ const rules={
 
 // 获取form实例做统一校验
 const formRef=ref(null)
-
+const router=useRouter()
 const doLogin=()=>{
+  const  { account,password }=form.value
   // 调用实例方法
-  formRef.value.validate ((valid)=>{
+  formRef.value.validate(async(valid)=>{
     // valid所有项都通过才为true
     if(valid){
-      console.log('login');
-    }
-    else{
-      console.log('nologin')
+      const res=await loginAPI({account,password})
+      console.log(res)
+      // 提示用户
+      ElMessage({type:'success',message:'登陆成功'})
+      // 跳转组件
+      router.replace({path:'/'})
     }
   })
 }
