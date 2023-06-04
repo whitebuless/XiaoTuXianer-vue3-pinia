@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { loginAPI } from '@/apis/user'
 
+
 export const useUserStore=defineStore('user',()=>{
   // 定义state
   const userInfo=ref({})
@@ -16,4 +17,6 @@ export const useUserStore=defineStore('user',()=>{
     userInfo,
     getUserInfo
   }
+}, {
+  persist: true,
 })
