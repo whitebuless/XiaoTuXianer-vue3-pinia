@@ -11,7 +11,7 @@ export const useCartStore=defineStore("cart",()=>{
     // 没有添加过直接push
     const item = cartList.value.find((item)=>goods.skuId===item.skuId)
     if(item){
-      item.count++
+      item.count=item.count+goods.count
     }else{    
       cartList.value.push(goods)
     }
