@@ -40,6 +40,15 @@ export const useCartStore=defineStore("cart",()=>{
   //计算属性
   const allCount=computed(()=>cartList.value.reduce((a,c)=>a+c.count,0))
   const allPrice=computed(()=>cartList.value.reduce((a,c)=>a+c.price*c.count,0))
+
+  // 已选择数量
+  const selectedCount=computed(()=>cartList.value
+    .filter((item)=>item.selected)
+    .reduce((a,c)=>a+c.count,0))
+  // 已选择商品合计
+  const selectedPrice=computed(()=>cartList.value
+  .filter((item)=>item.selected)
+  .reduce((a,c)=>a+c.price*c.count,0))
   // 是否全选
   const isAll=computed(()=>cartList.value.every((item)=>item.selected))
   return {
@@ -50,7 +59,9 @@ export const useCartStore=defineStore("cart",()=>{
     allPrice,
     singleCheck,
     isAll,
-    allCheck
+    allCheck,
+    selectedCount,
+    selectedPrice
   }
 },{
   persist:true
