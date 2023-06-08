@@ -125,7 +125,7 @@ const payUrl = `${baseURL}pay/aliPay?orderId=${route.query.id}&redirect=${redire
       border-bottom: 1px solid #f5f5f5;
     }
   }
-
+//1
   .btn {
     width: 150px;
     height: 50px;
